@@ -1,0 +1,305 @@
+2.1.1. Vad betyder procent?
+Procent betyder "per hundra". Det används för att beskriva hur stor del något är i förhållande till 100. Till exempel, 25% betyder 25 av 100.
+
+2.1.2. Skriv i procentform.
+a) 0,43 = 43%
+b) 0,8 = 80%
+c) 1,15 = 115%
+
+2.1.3. Skriv i decimalform och procentform (avrunda till två decimaler och hela procent):
+a) 1/7
+Decimalform: ≈ 0,14
+Procentform: ≈ 14%
+
+b) 2/3
+Decimalform: ≈ 0,67
+Procentform: ≈ 67%
+
+c) 13/11
+Decimalform: ≈ 1,18
+Procentform: ≈ 118%
+
+2.1.4. Ordna i storleksordning (från minst till störst):
+a) 0,38 6/16 4%
+0,38 = 38%
+6/16 = 0,375 = 37,5%
+4% = 0,04
+Rätt ordning: 4% (0,04), 6/16 (0,375), 0,38
+
+b) 0,3 1/3 33%
+0,3 = 30%
+1/3 ≈ 0,333... = 33,3%
+33% = 0,33
+Rätt ordning: 0,3 (30%), 33% (0,33), 1/3 (0,333...)
+
+2.1.5. Melissa fick 47 av 78 poäng. Klarade hon provet?
+47/78 ≈0,6026=60,26%
+Svar: Ja, Melissa klarade provet eftersom hon fick 60,26%, vilket är över 60%.
+
+2.1.6. Båten kostar 285 000 kr, vilket är 85% av ordinarie pris.
+a)
+Låt ordinarie pris = x.
+85% av x = 285 000
+⇒ 0,85x = 285 000
+⇒ x = 285 000 / 0,85
+⇒ x = 335 294 kr (avrundat till närmaste heltal)
+
+b)
+Emelie betalar 260 000 kr i stället.
+Hon sparar: 335 294 − 260 000 = 75 294 kr
+Procentuellt:
+75294/335294≈0,2246=22%
+
+Svar: Emelie prutade 22%
+
+2.1.7. 13% av 435 elever är inte simkunniga.
+a) 13% av 435 = 0,13 × 435=56,55≈57 elever
+
+Svar: Cirka 57 elever är inte simkunniga.
+
+b) 87 elever var inte simkunniga.
+87/435≈0,2=20%
+
+Svar: 20% av eleverna var inte simkunniga.
+
+2.1.8
+Ett träds höjd ökade med 8 dm, vilket motsvarar 20%. Hur högt var trädet i slutet av året?
+Om 8 dm motsvarar 20%, så motsvarar 100% (den ursprungliga höjden)
+8 / 0,20 =40dm
+
+Så den ursprungliga höjden var 40 dm, och efter ökningen:
+Sluthöjd = 40 dm + 8 dm = 48 dm
+
+2.1.9 Vilken förändringsfaktor motsvarar...
+a) En ökning med 13%
+Förändringsfaktor = 1 + 0,13 = 1,13
+
+b) En minskning med 7%
+Förändringsfaktor = 1 − 0,07 = 0,93
+
+c) En ökning med 1,5%
+Förändringsfaktor = 1 + 0,015 = 1,015
+
+2.1.10
+Solsemester prisökning: från 15 600 kr till 17 628 kr. Hur många procent har priset ökat?
+
+Prisökning:
+17628 − 15600=2028kr
+
+Procentuell ökning:
+2028/15600≈0,13=13%
+
+Svar: Priset har ökat med 13%
+
+2.1.11
+Cyklande anställda ökade från 40% till 60%.
+
+a) Ökning i procentenheter:
+60%−40%=20 procentenheter
+
+b) Procentuell ökning i förhållande till ursprungsvärdet (40%)
+60−40/40=20/40=0,5=50%
+
+Svar:
+Ökningen är 20 procentenheter
+Det motsvarar en 50% ökning
+
+Uppgift 2.2.1
+Tal: 8, 4, 13, 10, 7
+
+a) Medelvärde:
+Medelvärde=8+4+13+10+7/5=42/5=8,4
+
+b) Median:
+För att hitta medianen sorterar vi talen i storleksordning:
+4, 7, 8, 10, 13
+Eftersom det är ett udda antal tal är medianen det mittersta talet:
+
+Median=8
+
+Uppgift 2.2.2
+Antal
+Böcker	Frekvens
+0	1
+1	12
+2	8
+3	9
+4	5
+5	1
+6	2
+7	1
+8	1
+Totalt:	40
+
+a) Medelvärde:
+Vi multiplicerar varje antal böcker med sin frekvens och summerar:
+(0⋅1)+(1⋅12)+(2⋅8)+(3⋅9)+(4⋅5)+(5⋅1)+(6⋅2)+(7⋅1)+(8⋅1)=0+12+16+27+20+5+12+7+8=107
+Medelvärde= 40/107=2,675
+
+b) Typvärde:
+Typvärdet är det antal böcker som flest elever har läst. Den största frekvensen är 12, vilket motsvarar:
+Typvärde=1bok
+
+Uppgift 2.2.3
+Medelåldern i en familj är 18 år. Vilken är medelåldern i familjen om 4 år?
+Om varje familjemedlem blir 4 år äldre om 4 år, så ökar även medelåldern med 4 år.
+
+Svar:
+18+4=22
+Medelåldern om 4 år är 22 år.
+
+Uppgift 2.2.4
+Tärningskast: 2, 5, 4, 4, 5, 4
+Sorterade tal: 2, 4, 4, 4, 5, 5
+
+Medelvärde:
+2+5+4+4+5+4 = 24 / 6 = 4
+
+Median:
+Median = medelvärdet av de två mittersta talen: (4 + 4) / 2 = 4
+
+Typvärde:
+4 förekommer 3 gånger (mest) → Typvärde = 4
+
+Svar:
+Alla tre är lika stora, alltså:
+Medelvärde = Median = Typvärde = 4
+
+Uppgift 2.2.5
+Tre klasser tävlar med 5 personer i varje. Vi jämför medelvärde, median och typvärde.
+
+Klass A: 62, 94, 95, 98, 98
+Medelvärde: 62+94+95+98+98/5 = 447/5 = 89,4
+Median: 95
+Typvärde: 98
+
+Klass B: 62, 63, 98, 98, 99
+Medelvärde: 62+63+98+98+99/5 = 420/5 = 84
+​Median: 98
+Typvärde: 98
+
+Klass C: 58, 62, 95, 99, 99
+Medelvärde: 58+62+95+99+99/5 = 413/5 = 82,6
+Median: 95
+Typvärde: 99
+
+Klass A har högst medelvärde.
+Klass B har högst median.
+Klass C har högst typvärde.
+Svar: Klass A lyckades bäst om man ser till medelvärdet, vilket ofta är det mest rättvisa måttet i tävlingar.
+
+Uppgift 2.3.1
+Variationsbredd (även kallad spridningsbredd) är skillnaden mellan det största och minsta värdet i en datamängd.
+
+Värden:
+300 kg, 325 kg, 364 kg, 314 kg, 298 kg
+Största värde: 364 kg
+Minsta värde: 298 kg
+Variationsbredd=364−298=66 kg
+
+Svar:
+Variationsbredden är 66 kg.
+
+Uppgift 2.3.2
+a) Övre kvartil: 16
+b) Median: 11
+c) Undre kvartil: 6
+d) Variationsbredd: Största värde−Minsta värde=16−6=10
+e) Kvartilavstånd: övre(16) - undre(6) = 16 - 6 = 10
+​
+Uppgift 2.3.3 
+Vi använder informationen från föregående uppgift:
+Min: 6 cm
+nedre kvartil: 6 cm
+Median: 11 cm
+övre kvartil: 16 cm
+Max: 16 cm
+Totalt antal växter: 8
+
+a) Hur stor andel av växterna är över 6 cm?
+Från nedre till Max (dvs. >6 cm) representeras 75 % av datan.
+Men eftersom nedre = 6 cm, så "över 6 cm" betyder vi tittar på andelen strikt större än 6 cm.
+Eftersom kvartilerna delar upp datan i fyra lika stora delar:
+Varje kvartil = 25 % av växterna = 2 växter (eftersom 8 växter totalt).
+→ Alla utom de lägsta 25 % (som är ≤ 6 cm) är över 6 cm.
+
+Svar:100%−25%= 75% av växterna är över 6 cm
+
+b) Medianen = 11 cm.
+50 % av växterna är mindre än eller lika med 11 cm.
+
+Uppgift 2.3.4
+Minsta värde: 495
+Största värde: 504
+
+a) Variationsbredd=504−495 = 9 gram
+
+b)
+Sortera talen i storleksordning:
+495, 497, 498, 499, 500, 500, 501, 502, 503, 504
+
+Median: Medelvärde av 5:e och 6:e värdet: 500+500/2 = 500
+Undre kvartil: Median av de första 5 värdena: 495, 497, 498, 499, 500 → 498
+Övre kvartil: Median av de sista 5 värdena: 500, 501, 502, 503, 504 → 502
+
+c) övre - mindre = 502−498= 4 gram
+ Kvartilavstånd: 4 gram
+
+ 2.4.1
+ a) Vad används diagram till?
+Diagram används för att presentera data visuellt så att det blir lättare att se mönster, jämföra värden och dra slutsatser.
+
+b) Vad används linjediagram för?
+Linjediagram används för att visa förändringar över tid – t.ex. temperatur över dagar, försäljning per månad eller utveckling av en aktiekurs.
+
+c) Vad används cirkeldiagram till?
+Cirkeldiagram används för att visa hur en helhet är fördelad i delar – t.ex. hur många procent som röstar på olika partier eller hur en budget är uppdelad.
+
+d) Vad används stapeldiagram till?
+Stapeldiagram används för att jämföra olika kategorier – t.ex. antal elever i olika klasser eller försäljning av olika produkter.
+
+e) Vad används stolpdiagram till?
+Stolpdiagram liknar stapeldiagram, men används oftast för diskreta data (t.ex. antal syskon, antal bilar) där värdena är heltal.
+
+f) Vad används histogram till?
+Histogram används för att visa fördelningen av kontinuerlig data (t.ex. längder, vikter) uppdelat i intervall. Det passar när man har många mätvärden.
+
+g) Vad används punktdiagram till?
+Punktdiagram (eller spridningsdiagram) används för att undersöka samband mellan två variabler – t.ex. längd vs vikt, eller studietid vs provresultat.
+
+2.4.2
+Svar: Cirkeldiagram
+Ett cirkeldiagram gör det lätt att se hur stor del varje utbildningsnivå utgör av hela gruppen, och är därför ett tydligt och passande val i detta fall.
+´´´ Python Kod för att visa det ´´´
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+labels = ['Universitetsutbildning', 'Yrkeshögskoleutbildning', 'Gymnasieutbildning']
+sizes = [61, 32, 7]
+colors = ['#66b3ff', '#99ff99', '#ffcc99']
+explode = (0.1, 0, 0)  # Lyfter fram universitetsutbildning
+
+plt.figure(figsize=(8, 6))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors, explode=explode)
+plt.title('Utbildningsnivåer inom IT-branschen')
+plt.axis('equal')  # Gör så att cirkeln blir rund
+plt.show()
+´´´---´´´
+( se bild.png i samma map )
+
+2.4.3
+Stapeldiagram och stolpdiagram är väldigt lika, men används i olika sammanhang beroende på typen av data.
+Stapeldiagram (Bar chart)
+Används för att visa data i kategorier, t.ex. färger, ämnen eller länder.
+Kategorier är ofta ord (kvalitativa data).
+Exempel på när stapeldiagram passar:
+Antal elever i varje skolämne (Matte, Engelska, Svenska)
+Försäljning per månad (Jan, Feb, Mar…)
+
+Stolpdiagram (Column chart eller Stickdiagram)
+Används för att visa diskreta numeriska värden, t.ex. antal syskon, antal bilar eller antal prickar på en tärning.
+Värdena är ofta heltal (diskreta kvantitativa data).
+Exempel på när stolpdiagram passar:
+Hur många elever som har 0, 1, 2, 3, 4 eller 5 syskon
+Antal gånger varje tärningssiffra förekom i ett experiment
