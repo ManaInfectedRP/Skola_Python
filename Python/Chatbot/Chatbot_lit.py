@@ -66,14 +66,14 @@ if not st.session_state.chat_history:
     första_meddelande = {
         "role": "assistant",
         "content": (
-            "Hej! Jag är TaskBot.\n\n"
+            "Hej! Jag är MatteBot.\n\n"
             "Jag kan räkna, komma ihåg anteckningar, hantera vektorer/matriser.\n\n"
             "**Kommandon:**\n"
             "- `beräkna` eller `vad är` (t.ex. 'beräkna 2 + 2')\n"
             "- `kvadratrot` (t.ex. 'kvadratrot 9')\n"
             "- `kom ihåg ...`, `återkalla`, `minns`\n"
             "- `vektor ...` (t.ex. 'vektor 1,2,3 + 4,5,6')\n"
-            "- `matris ...` (t.ex. 'matris a x a 1,2;3,4')\n"
+            "- `matris ...` (t.ex. 'matris 1,2;3,4')\n"
             "- `sluta` eller `avsluta` för att avsluta"
         )
     }
