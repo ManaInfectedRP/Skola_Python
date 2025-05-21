@@ -45,7 +45,20 @@ st.pyplot(fig1)
 # Genomsnittligt pris per färg
 avg_color = filtered_df.groupby("color")["price"].mean().sort_index()
 fig2, ax2 = plt.subplots()
-ax2.bar(avg_color.index, avg_color.values, color="gold")
+# Färgkarta för diamantfärger
+color_map = {
+    'D': '#4B9CD3',
+    'E': '#76B041',
+    'F': '#FFD700',
+    'G': '#FF7F50',
+    'H': '#D87093',
+    'I': '#9370DB',
+    'J': '#A9A9A9'
+}
+
+bar_colors = [color_map.get(color, 'gray') for color in avg_color.index]
+ax2.bar(avg_color.index, avg_color.values, color=bar_colors)
+
 ax2.set_title("Genomsnittligt pris per färg")
 ax2.set_xlabel("Färg")
 ax2.set_ylabel("Pris (USD)")
