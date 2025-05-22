@@ -35,6 +35,8 @@ filtered_df = df[
 st.write(f"Visar {len(filtered_df)} rader efter filter.")
 
 # Pris vs Carat scatterplot
+st.subheader("Pris vs Carat")
+
 fig1, ax1 = plt.subplots()
 ax1.scatter(filtered_df["carat"], filtered_df["price"], alpha=0.5)
 ax1.set_title("Pris vs Carat")
@@ -43,6 +45,8 @@ ax1.set_ylabel("Pris (USD)")
 st.pyplot(fig1)
 
 # Genomsnittligt pris per färg
+st.subheader("Genomsnittligt pris per färg")
+
 avg_color = filtered_df.groupby("color")["price"].mean().sort_index()
 fig2, ax2 = plt.subplots()
 # Färgkarta för diamantfärger
@@ -65,6 +69,7 @@ ax2.set_ylabel("Pris (USD)")
 st.pyplot(fig2)
 
 # Genomsnittligt pris per klarhet
+st.subheader("Genomsnittligt pris per klarhet")
 avg_clarity = filtered_df.groupby("clarity")["price"].mean().sort_index()
 fig3, ax3 = plt.subplots()
 ax3.bar(avg_clarity.index, avg_clarity.values, color="silver")
@@ -72,3 +77,13 @@ ax3.set_title("Genomsnittligt pris per klarhet")
 ax3.set_xlabel("Klarhet")
 ax3.set_ylabel("Pris (USD)")
 st.pyplot(fig3)
+
+# Cirkeldiagram över fördelning av slipkvalitet ("cut")
+st.subheader("Fördelning av slipkvalitet (Cut)")
+
+cut_counts = filtered_df["cut"].value_counts()
+fig4, ax4 = plt.subplots()
+ax4.pie(cut_counts.values, labels=cut_counts.index, autopct='%1.1f%%', startangle=90)
+ax4.axis('equal')  # För att göra cirkeln rund
+st.pyplot(fig4)
+

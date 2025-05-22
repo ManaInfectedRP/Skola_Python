@@ -1,16 +1,104 @@
-DIAMONDS
-This is a description of my data analys here are the points:
+STRUKTERERING:
 
-1.
-2.
-3.
-4.
-5.
+TITLE:
+Inledning:
+Datapresentation:
+Innehållsförteckning:
+1.2.3.4.5
+ANALYS
+Sammanfattande Insikter
+Executive Summary
+
+------------------
+TITLE -:
+Diamantanalyser för Guldfynd – Affärsinsikter inför sortimentsutvidgning
+
+Intro -:
+"Diamantanalyser för Guldfynd – Affärsinsikter inför sortimentsutvidgning"
+Utforska diamantdata för att identifiera trender och insikter som kan guida Guldfynds investering i diamantsortiment.
+
+Datapreparation -:
+Ladda in data : Undersöka Data : Töm NULL värden i data
+
+Innhållsföteckning -:
+Intro --
+Datapreparation --
+Analyser --
+Sammanfattaning --
+Executive Summary --
+
+ANALYS -:
+1. Pris vs Vikt (Carat)
+2. Genomsnittligt Pris per Färg
+3. Genomsnittligt Pris per Klarhet
+4. Genomsnittligt Pris per Slipkvalitet (Cut)
+
+Sammanfattaning -:
+Förklaringar för hur vi gjorde med Analysen.
+
+Summary -:
+Varför vi ska sälja diamanter.
 
 
-DATA Analys
-.
-.
-.
+---------------
+Kunskapskontrollen - Arbetsgång
+Hur man exakt arbetar varierar, arbeta på sätt som passar dig. Men, några generella mönster som är bra att tänka på följande:
+1. Ha ett Slask skript som du verkligen kallar för "Slask". Hjälper dig rent pyskologiskt att ösa ut ider.
+2. Prata med klasskamrater och see om de hittat något intresant.
+3. Struktur:
+ * Besvara första frågorna
+ * Vi varvar text, kod, visualiseringar och uträkningar i jupyter
+    - Ha en kort bakgrund där du ger information om vad diamanter är, vad "business caset är", vad ditt syfte är. VAD ÄR ALLSVINKELN?
+    - Huvudet med ANALYS:
+        * VARVA Text/Förklaringar/Analys med Kod. Ha gärna ingresser där du kort skriver vad läsaren kommer se.
+    - När ni är klara gör ni en executive summary där ni presenterar de viktigaste slutsatserna på några meningar.
+        Tänk på att detta ska exempelvis företagsledning läsa.
 
-Förklaring av Analys
+    - TIPS: Var koncisa, ha en röd tråd och gör inte 1000 uträkningar och visualiseringar utan att förklara och ha ett tydligt syfte.
+
+
+
+------------------
+TITLE -:
+Diamantanalyser för Guldfynd – Affärsinsikter inför sortimentsutvidgning
+
+Intro -:
+Guldfynd, med butiker över hela Norden, överväger att utöka sitt sortiment till att även inkludera diamanter.
+Syftet med denna analys är att undersöka diamantmarknaden genom ett tillgängligt dataset för att förstå vad som påverkar priset,
+och ge rekommendationer kring vilka diamanttyper som kan vara kommersiellt mest attraktiva att sälja.
+
+Datapreparation -:
+Vi börjar med att ladda in datan, undersöka dess struktur och rensa bort saknade värden för att möjliggöra en pålitlig analys.
+
+
+Innehållsförteckning -:
+-- Intro
+-- Datapreparation
+-- Innehållsförteckning --
+
+
+-- Analysen --
+1. Pris vs Vikt (Carat)
+2. Genomsnittligt Pris per Färg
+3. Genomsnittligt Pris per Klarhet
+4. Genomsnittligt Pris per Slipkvalitet (Cut)
+
+-- Sammanfattande Insikter
+
+-- Executive Summary ( Förslag till Guldfynds ledning: )
+
+
+ANALYS -:
+1. Pris vs Vikt (Carat)
+2. Genomsnittligt Pris per Färg
+3. Genomsnittligt Pris per Klarhet
+4. Genomsnittligt Pris per Slipkvalitet (Cut)
+
+
+Sammanfattande Insikter -:
+Förklaringar för hur vi gjorde med Analysen.
+
+
+Executive Summary -:
+Varför vi ska sälja diamanter.
+

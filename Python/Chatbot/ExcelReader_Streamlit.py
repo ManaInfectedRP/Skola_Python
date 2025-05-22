@@ -2,22 +2,16 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Excel Visualizer", layout="wide")
-st.title("📊 Excel Data Visualizer med Arkval, Filter & Färg")
+st.set_page_config(page_title="Excel-Visualizer", layout="wide")
+st.title("Excel Data Visualizer med Filter & Färgval 🎨")
 
 # 1. Ladda upp Excel-fil
 uploaded_file = st.file_uploader("📁 Ladda upp en Excel-fil", type=["xlsx", "xls"])
 
 if uploaded_file is not None:
     try:
-        # 2. Lista alla ark i Excel-filen
-        excel_file = pd.ExcelFile(uploaded_file)
-        sheet_names = excel_file.sheet_names
-        sheet = st.selectbox("🗂️ Välj ark i Excel-filen", sheet_names)
-
-        # 3. Läs valt ark
-        df = pd.read_excel(excel_file, sheet_name=sheet)
-        st.success(f"✅ Ark '{sheet}' inläst!")
+        df = pd.read_excel(uploaded_file)
+        st.success("✅ Fil inläst!")
 
         # Visa dataframe
         st.subheader("📋 Förhandsvisning av data")
@@ -25,19 +19,29 @@ if uploaded_file is not None:
 
         columns = df.columns.tolist()
 
-        # 4. Välj X- och Y-kolumner
-        st.subheader("📊 Välj kolumner för graf")
+        # 2. Filtrera data baserat på kolumnvärden
+        st.subheader("🔍 Filtrera data (valfritt)")
+
+        filter_column = st.selectbox("Välj kolumn att filtrera på (eller hoppa över)", ["Ingen"] + columns)
+
+        if filter_column != "Ingen":
+            unique_vals = df[filter_column].dropna().unique().tolist()
+            selected_vals = st.multiselect(f"Välj värde(n) för '{filter_column}'", unique_vals, default=unique_vals)
+            df = df[df[filter_column].isin(selected_vals)]
+
+        # 3. Dropdown för x- och y-axel
+        st.subheader("📊 Välj X och Y")
         x_col = st.selectbox("X-axel", columns)
         y_col = st.selectbox("Y-axel", columns)
 
-        # 5. Välj typ av diagram
+        # 4. Diagramtyp
         plot_type = st.radio("📈 Välj diagramtyp", ["Scatter", "Line", "Bar"])
 
-        # 6. Färgval
+        # 5. Färgval
         color = st.color_picker("🎨 Välj färg", "#1f77b4")
 
-        # 7. Visa graf
-        st.subheader("📌 Diagram")
+        # 6. Rita diagram
+        st.subheader("📌 Resultat")
         fig, ax = plt.subplots(figsize=(8, 5))
 
         if plot_type == "Scatter":
