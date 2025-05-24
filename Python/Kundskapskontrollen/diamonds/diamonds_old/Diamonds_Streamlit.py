@@ -7,8 +7,7 @@ import matplotlib.pyplot as plt
 # Titel
 st.title("💎 Diamantanalys för Guldfynd")
 st.markdown("""
-Denna interaktiva applikation visar insikter från en analys av diamantpriser baserat på vikt, färg, klarhet och slipkvalitet.
-Använd reglage och val för att filtrera och utforska data.
+
 """)
 
 # Läs in data
