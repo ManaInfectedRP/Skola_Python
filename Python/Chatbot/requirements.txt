@@ -3,3 +3,4 @@ streamlit_webrtc
 opencv-python
 pandas
 matplotlib
+moviepy==1.0.3
