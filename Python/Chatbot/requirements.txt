@@ -3,5 +3,4 @@ streamlit_webrtc
 opencv-python
 numpy
 av
-cv2
 time
