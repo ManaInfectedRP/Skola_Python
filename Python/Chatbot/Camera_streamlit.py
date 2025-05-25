@@ -1,9 +1,5 @@
 import sys
 import streamlit as st
-
-st.write("Python executable:", sys.executable)
-st.write("Python version:", sys.version)
-
 from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
 import av
 import numpy as np
