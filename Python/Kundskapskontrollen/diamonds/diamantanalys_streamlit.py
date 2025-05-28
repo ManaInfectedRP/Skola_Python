@@ -3,6 +3,11 @@ import pandas as pd
 import plotly.express as px
 import os
 
+
+# --- Sidinställningar ---
+st.set_page_config(page_title="Diamantanalys – Guldfynd", layout="wide")
+st.title("💎 Diamantanalys för Guldfynd")
+
 # --- Bakgrunds Bild ---
 def add_bg_from_url(url):
     st.markdown(
@@ -20,10 +25,6 @@ def add_bg_from_url(url):
     )
 
 add_bg_from_url("https://i.imgur.com/edBoQCV.jpeg")
-
-# --- Sidinställningar ---
-st.set_page_config(page_title="Diamantanalys – Guldfynd", layout="wide")
-st.title("💎 Diamantanalys för Guldfynd")
 
 # 1. Ladda upp Excel-fil
 uploaded_file = st.file_uploader("📁 Ladda upp en Excel-fil", type=["xlsx", "xls"])
