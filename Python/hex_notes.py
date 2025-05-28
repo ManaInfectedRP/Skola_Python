@@ -1,3 +1,6 @@
+# pip install pyinstaller
+# pyinstaller --onefile --windowed hex_notes.py
+
 import sqlite3
 import tkinter as tk
 from tkinter import Toplevel, Label, Entry, Button, Text, colorchooser, messagebox
