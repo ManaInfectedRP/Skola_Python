@@ -101,18 +101,8 @@ if df is not None:
     )
     st.plotly_chart(fig3, use_container_width=True)
 
-    # --- Rekommendationer ---
-    st.subheader("📌 Rekommendationer – Executive Summary")
-    st.markdown("""
-    - **Fokusera på diamanter mellan 0.7 – 1.2 carat**, där marginalerna verkar vara bäst.
-    - **Clarity VS2–SI1** och **color G–H** ger bäst balans mellan pris och kvalitet.
-    - **Ideal och Very Good cut** rekommenderas då de ofta erbjuder hög kvalitet till rimligt pris.
-    - Mellan Ex o VG cut ger ibland högt pris utan proportionellt högre värde.
-    - Undvik mycket stora diamanter (>2 carat) i första skedet – dessa är få och dyra.
-    """)
-
     st.markdown("---")
-    st.markdown("📊 Analysen är baserad på publikt diamantdata. Visualiseringar med Plotly & Matplotlib.")
+    st.markdown("📊 Analysen är baserad på publikt diamantdata. Visualiseringar med Plotly.")
 
 else:
     st.warning("Ingen data kunde laddas. Kontrollera filvägen ovan.")
