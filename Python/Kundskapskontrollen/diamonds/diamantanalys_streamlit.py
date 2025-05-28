@@ -47,6 +47,12 @@ with st.spinner("Laddar data..."):
         df = None
 
 if df is not None:
+    cols_to_check = ['carat', 'price', 'x', 'y', 'z']
+    cols_exist = [col for col in cols_to_check if col in df.columns]
+
+    if cols_exist:
+        df = df[(df[cols_exist] != 0).all(axis=1)]
+
     # --- Mappa "cut"-värden ---
     cut_mapping = {
         "Ideal": "Excellent",
