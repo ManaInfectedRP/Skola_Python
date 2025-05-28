@@ -75,6 +75,11 @@ if df is not None:
     selected_cut = st.sidebar.multiselect("Cut (GIA)", options=df['cut_gia'].unique(), default=list(df['cut_gia'].unique()))
     selected_color = st.sidebar.multiselect("Color", options=df['color'].unique(), default=list(df['color'].unique()))
     selected_clarity = st.sidebar.multiselect("Clarity", options=df['clarity'].unique(), default=list(df['clarity'].unique()))
+    st.sidebar.markdown("### 📌 Välj analys")
+    analysis_option = st.sidebar.selectbox(
+        "Vad vill du analysera?",
+        ("Visa filtrerade diamanter", "Räkna antal", "Summera pris", "Medelpris per cut")
+    )
 
     # --- Filtrering ---
     filtered_df = df[
@@ -128,6 +133,28 @@ if df is not None:
 
     st.markdown("---")
     st.markdown("📊 Analysen är baserad på publikt diamantdata. Visualiseringar med Plotly.")
+
+    st.markdown(f"### Filtrerade diamanter: {len(filtered_df)} st")
+
+    if analysis_option == "Visa filtrerade diamanter":
+        st.dataframe(filtered_df)
+
+    elif analysis_option == "Räkna antal":
+        count_summary = filtered_df.groupby("cut_gia").size().reset_index(name="Antal")
+        st.subheader("🔢 Antal diamanter per Cut")
+        st.dataframe(count_summary)
+
+    elif analysis_option == "Summera pris":
+        price_sum = filtered_df["price"].sum()
+        st.subheader("💰 Total summa (USD)")
+        st.metric(label="Totalt pris för valda diamanter", value=f"${price_sum:,.0f}")
+
+    elif analysis_option == "Medelpris per cut":
+        avg_price = filtered_df.groupby("cut_gia")["price"].mean().reset_index()
+        avg_price.columns = ["Cut (GIA)", "Medelpris (USD)"]
+        st.subheader("📊 Medelpris per Cut")
+        st.dataframe(avg_price)
+
 
 else:
     st.warning("Ingen data kunde laddas. Kontrollera filvägen ovan.")
