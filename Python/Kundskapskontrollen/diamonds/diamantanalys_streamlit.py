@@ -3,6 +3,24 @@ import pandas as pd
 import plotly.express as px
 import os
 
+# --- Bakgrunds Bild ---
+def add_bg_from_url(url):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("{url}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+add_bg_from_url("https://i.imgur.com/edBoQCV.jpeg")
+
 # --- Sidinställningar ---
 st.set_page_config(page_title="Diamantanalys – Guldfynd", layout="wide")
 st.title("💎 Diamantanalys för Guldfynd")
