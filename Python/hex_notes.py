@@ -1,9 +1,10 @@
+
 # pip install pyinstaller
 # pyinstaller --onefile --windowed hex_notes.py
 
 import sqlite3
 import tkinter as tk
-from tkinter import Toplevel, Label, Entry, Button, Text, colorchooser, messagebox
+from tkinter import Toplevel, Label, Entry, Button, Text, Scrollbar, colorchooser, messagebox
 from datetime import datetime
 import math
 
@@ -35,7 +36,7 @@ HEIGHT = 600
 def hex_to_pixel(q, r):
     x = HEX_SIZE * 3/2 * q
     y = HEX_SIZE * math.sqrt(3) * (r + q / 2)
-    return x, y  # vi använder offset i ritning
+    return x, y
 
 def polygon_corners(x, y):
     corners = []
@@ -53,13 +54,11 @@ def axial_range(radius):
         for r in range(r1, r2 + 1):
             yield (q, r)
 
-# --- Hjälpfunktion för att kapa text ---
 def shorten_text(text, max_length=12):
     if len(text) <= max_length:
         return text
     return text[:max_length-3] + "..."
 
-# --- GUI ---
 class HexApp:
     def __init__(self, root):
         self.root = root
@@ -67,44 +66,45 @@ class HexApp:
         self.canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="white")
         self.canvas.pack()
 
-        # Offsets för panoreringsläge
         self.offset_x = 0
         self.offset_y = 0
         self.dragging = False
         self.last_drag_x = 0
         self.last_drag_y = 0
 
-        self.hexes = {}   # (q, r) -> canvas_id
-        self.labels = {}  # (q, r) -> text_id
-        self.data = {}    # (q, r) -> data dict
+        self.zoom = 1.0
+
+        self.hexes = {}
+        self.labels = {}
+        self.tooltips = {}
+        self.data = {}
 
         self.load_data()
         self.draw_grid()
 
-        # Bind mus för klick och pan
         self.canvas.bind("<Button-1>", self.on_click)
-        self.canvas.bind("<ButtonPress-2>", self.start_pan)  # scrollhjul klick
+        self.canvas.bind("<ButtonPress-2>", self.start_pan)
         self.canvas.bind("<B2-Motion>", self.do_pan)
         self.canvas.bind("<ButtonRelease-2>", self.end_pan)
-        # Alternativt pan med shift+vänsterklick
         self.canvas.bind("<Shift-ButtonPress-1>", self.start_pan)
         self.canvas.bind("<Shift-B1-Motion>", self.do_pan)
         self.canvas.bind("<Shift-ButtonRelease-1>", self.end_pan)
-        
+        self.canvas.bind("<MouseWheel>", self.on_zoom)
+        self.canvas.bind("<Motion>", self.on_hover)
 
-        # Töm databas-knapp
         clear_btn = Button(root, text="Töm hela databasen", command=self.clear_database)
         clear_btn.pack(pady=5)
-
+    
     def draw_grid(self):
         self.canvas.delete("all")
         self.hexes.clear()
         self.labels.clear()
+        self.tooltips.clear()
 
-        for q, r in axial_range(15):  # större grid nu
+        for q, r in axial_range(15):
             px, py = hex_to_pixel(q, r)
-            x = px + WIDTH // 2 + self.offset_x
-            y = py + HEIGHT // 2 + self.offset_y
+            x = px * self.zoom + WIDTH // 2 + self.offset_x
+            y = py * self.zoom + HEIGHT // 2 + self.offset_y
             corners = polygon_corners(x, y)
             flat_corners = [coord for corner in corners for coord in corner]
             color = self.data.get((q, r), {}).get("color", "#ffffff")
@@ -112,10 +112,30 @@ class HexApp:
             self.hexes[(q, r)] = hex_id
 
             title = self.data.get((q, r), {}).get("title", "")
+            date = self.data.get((q, r), {}).get("date", "")
             if title:
                 display_title = shorten_text(title, max_length=12)
-                text_id = self.canvas.create_text(x, y, text=display_title, font=("Helvetica", 10, "bold"))
+                text_id = self.canvas.create_text(x, y - 8, text=display_title, font=("Helvetica", 10, "bold"))
                 self.labels[(q, r)] = text_id
+                self.tooltips[text_id] = title
+            if date:
+                self.canvas.create_text(x, y + 8, text=date, font=("Helvetica", 8), fill="gray")
+
+    def on_hover(self, event):
+        x, y = event.x, event.y
+        for text_id, full_text in self.tooltips.items():
+            bbox = self.canvas.bbox(text_id)
+            if bbox and bbox[0] <= x <= bbox[2] and bbox[1] <= y <= bbox[3]:
+                self.canvas.itemconfig(text_id, text=full_text)
+            else:
+                self.canvas.itemconfig(text_id, text=shorten_text(full_text))
+
+    def on_zoom(self, event):
+        if event.delta > 0:
+            self.zoom *= 1.1
+        else:
+            self.zoom /= 1.1
+        self.draw_grid()
 
     def on_click(self, event):
         q, r = self.pixel_to_axial(event.x, event.y)
@@ -123,9 +143,8 @@ class HexApp:
             self.open_editor(q, r)
 
     def pixel_to_axial(self, x, y):
-        # Omvandla canvas-koordinat (x,y) till axial q,r med hänsyn till offset
-        px = x - WIDTH // 2 - self.offset_x
-        py = y - HEIGHT // 2 - self.offset_y
+        px = (x - WIDTH // 2 - self.offset_x) / self.zoom
+        py = (y - HEIGHT // 2 - self.offset_y) / self.zoom
 
         q = (2/3 * px) / HEX_SIZE
         r = (-1/3 * px + math.sqrt(3)/3 * py) / HEX_SIZE
@@ -181,24 +200,28 @@ class HexApp:
         editor.geometry("400x300")
         editor.minsize(300, 200)
 
-        # Se till att grid rader/kolumner expanderar
-        editor.grid_rowconfigure(2, weight=1)   # Textfältet ska expandera vertikalt
-        editor.grid_columnconfigure(1, weight=1) # Kolumn 1 (där Entry/Text ligger) expanderar horisontellt
+        editor.grid_rowconfigure(2, weight=1)
+        editor.grid_columnconfigure(1, weight=1)
 
         Label(editor, text="Title:").grid(row=0, column=0, sticky="e")
         title_entry = Entry(editor)
         title_entry.insert(0, existing.get("title", ""))
-        title_entry.grid(row=0, column=1, sticky="ew")  # expandera horisontellt
+        title_entry.grid(row=0, column=1, sticky="ew")
 
         Label(editor, text="Date:").grid(row=1, column=0, sticky="e")
         date_entry = Entry(editor)
         date_entry.insert(0, existing.get("date", default_date))
-        date_entry.grid(row=1, column=1, sticky="ew")  # expandera horisontellt
+        date_entry.grid(row=1, column=1, sticky="ew")
 
         Label(editor, text="Text:").grid(row=2, column=0, sticky="ne")
-        text_box = Text(editor, wrap="word")
+        text_frame = tk.Frame(editor)
+        text_frame.grid(row=2, column=1, sticky="nsew")
+        text_box = Text(text_frame, wrap="word")
         text_box.insert("1.0", existing.get("text", ""))
-        text_box.grid(row=2, column=1, sticky="nsew")  # expandera i alla riktningar
+        scrollbar = Scrollbar(text_frame, command=text_box.yview)
+        text_box.configure(yscrollcommand=scrollbar.set)
+        text_box.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
 
         initial_color = existing.get("color", "#ffffff")
         color_btn = Button(editor, text="Choose Color", bg=initial_color)
@@ -208,11 +231,9 @@ class HexApp:
             color = colorchooser.askcolor(title="Choose color", initialcolor=color_btn["bg"])[1]
             if color:
                 color_btn.config(bg=color)
-
         color_btn.config(command=choose_color)
 
         def clear():
-            # Töm denna hex-data och ta bort från databasen
             if (q, r) in self.data:
                 del self.data[(q, r)]
             conn = sqlite3.connect(DB_FILE)
@@ -229,6 +250,12 @@ class HexApp:
         def save():
             title = title_entry.get()
             date = date_entry.get()
+            try:
+                datetime.strptime(date, "%Y-%m-%d")
+            except ValueError:
+                messagebox.showerror("Fel", "Datumformatet ska vara YYYY-MM-DD")
+                return
+
             text = text_box.get("1.0", "end-1c")
             color = color_btn["bg"] or "#ffffff"
 

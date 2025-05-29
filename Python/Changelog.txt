@@ -1,0 +1,6 @@
+Changelog 2025-05-29
+Datumvalidering	Säkerställer korrekt format -   (YYYY-MM-DD)
+Scrollbar i textfält    -   Bättre vid längre anteckningar
+Tooltip för titel (hover)   -   Fullständig titel visas
+Zoom med musens scrollhjul  -   In/utzoomning av hexgrid
+Datum visas i hexen    -   Litet datumfält under titeln i varje ruta
