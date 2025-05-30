@@ -155,7 +155,7 @@ if df is not None:
     elif analysis_option == "Summera pris":
         price_sum = filtered_df["price"].sum()
         st.subheader("💰 Total summa (USD)")
-        st.metric(label="Totalt pris för valda diamanter", value=f"${price_sum:,.0f}")
+        st.metric(label="Totalt pris för valda diamanter", value=f"${price_sum}")
 
     elif analysis_option == "Medelpris per cut":
         avg_price = filtered_df.groupby("cut_gia")["price"].mean().reset_index()
