@@ -53,6 +53,14 @@ if df is not None:
     if cols_exist:
         df = df[(df[cols_exist] != 0).all(axis=1)]
 
+    removed = df.dropna()
+# Depth-avvikelse
+    df['depth_calc'] = (df['z'] / ((df['x'] + df['y']) / 2)) * 100
+    df['depth_diff'] = abs(df['depth_calc'] - df['depth'])
+    before = df.shape[0]
+    df = df[df['depth_diff'] <= 1]
+    removed[">1% avvikelse i depth"] = before - df.shape[0]
+
     # --- Mappa "cut"-värden ---
     cut_mapping = {
         "Ideal": "Excellent",
