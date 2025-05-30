@@ -140,7 +140,7 @@ if df is not None:
     st.plotly_chart(fig3, use_container_width=True)
 
     st.markdown("---")
-    st.markdown("📊 Analysen är baserad på publikt diamantdata. Visualiseringar med Plotly.")
+    st.markdown("📊 Analysen är baserad på en skoluppgifts diamantdata. Visualiseringar med Plotly.")
 
     st.markdown(f"### Filtrerade diamanter: {len(filtered_df)} st")
 
