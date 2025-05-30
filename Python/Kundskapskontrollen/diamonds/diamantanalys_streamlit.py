@@ -64,10 +64,10 @@ if df is not None:
     # --- Mappa "cut"-värden ---
     cut_mapping = {
         "Ideal": "Excellent",
-        "Premium": "Mellan Ex o VG",
-        "Very Good": "Very Good",
-        "Good": "Good",
-        "Fair": "Fair"
+        "Premium": "Very Good",
+        "Very Good": "Good",
+        "Good": "Fair",
+        "Fair": "Poor"
     }
     df["cut_gia"] = df["cut"].map(cut_mapping)
 
