@@ -53,6 +53,14 @@ if df is not None:
     if cols_exist:
         df = df[(df[cols_exist] != 0).all(axis=1)]
 
+    df = df.dropna()
+    df = df[(df['x'] > 0) & (df['y'] > 0) & (df['z'] > 0)]
+    df = df[(df['x'] <= 15) & (df['y'] <= 15) & (df['z'] <= 15)]
+    df = df[~(df['carat'] < 1) & (df['z'] > 10)]
+    df['carat'] = (df['z'] / ((df['x'] + df['y'])/2)) * 100
+    df['depth_diff'] = abs(df['depth_calc'] - df['depth'])
+    df = df[df['depth_diff'] <= 1]
+
     # --- Mappa "cut"-värden ---
     cut_mapping = {
         "Ideal": "Excellent",
