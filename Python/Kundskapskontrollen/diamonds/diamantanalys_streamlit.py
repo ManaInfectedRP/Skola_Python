@@ -22,7 +22,6 @@ def setup_page_config():
 
 def add_background_styling(url: str):
     """Lägger till bakgrundsbild på sidan.
-    
     Args:
         url: Länk till bakgrundsbilden
     """
@@ -44,10 +43,8 @@ def add_background_styling(url: str):
 @st.cache_data
 def load_excel_data(file) -> Optional[pd.DataFrame]:
     """Laddar Excel-fil och gör grundläggande rensning.
-    
     Args:
         file: Streamlit-filuppladdning
-        
     Returns:
         DataFrame med grundrensning, eller None om det blir fel
     """
@@ -69,10 +66,8 @@ def load_excel_data(file) -> Optional[pd.DataFrame]:
 
 def calculate_depth_deviation(df: pd.DataFrame) -> pd.DataFrame:
     """Räknar ut djupavvikelse från x, y, z-måtten.
-    
     Args:
         df: DataFrame med x, y, z, depth-kolumner
-        
     Returns:
         DataFrame med tillagda depth_calc och depth_diff kolumner
     """
@@ -85,10 +80,8 @@ def calculate_depth_deviation(df: pd.DataFrame) -> pd.DataFrame:
 
 def clean_diamond_data(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
     """Rensar diamantdata enligt olika kvalitetsregler.
-    
     Args:
         df: Orensad diamant-DataFrame
-        
     Returns:
         Tuple med (rensad_df, borttagnings_logg)
     """
@@ -126,7 +119,6 @@ def clean_diamond_data(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
 
 def display_cleaning_summary(original_count: int, cleaned_count: int, removal_log: Dict[str, int]):
     """Visar sammanfattning av datarensningen.
-    
     Args:
         original_count: Antal rader före rensning
         cleaned_count: Antal rader efter rensning
@@ -146,10 +138,8 @@ def display_cleaning_summary(original_count: int, cleaned_count: int, removal_lo
 
 def validate_required_columns(selected_columns: List[str]) -> bool:
     """Kollar så att alla nödvändiga kolumner är valda.
-    
     Args:
         selected_columns: Lista med kolumnnamn som användaren valt
-        
     Returns:
         True om alla nödvändiga kolumner finns med
     """
@@ -162,11 +152,9 @@ def validate_required_columns(selected_columns: List[str]) -> bool:
 
 def create_dynamic_filters(df: pd.DataFrame, selected_columns: List[str]) -> Dict:
     """Filter baserat på valda kolumner och datatyper.
-    
     Args:
         df: DataFrame att skapa filter för
         selected_columns: Kolumner att skapa filter för
-        
     Returns:
         Lista med Filter
     """
@@ -186,11 +174,9 @@ def create_dynamic_filters(df: pd.DataFrame, selected_columns: List[str]) -> Dic
 
 def apply_filters(df: pd.DataFrame, filters: Dict) -> pd.DataFrame:
     """Tillåter filter på DF.
-    
     Args:
         df: DataFrame att filtrera
         filters: Ordbok med filtervillkor
-        
     Returns:
         Filtrerad DataFrame
     """
@@ -209,6 +195,7 @@ def apply_filters(df: pd.DataFrame, filters: Dict) -> pd.DataFrame:
 @st.cache_data
 def create_price_carat_scatter(df: pd.DataFrame) -> object:
     """Spridningsdiagram för pris vs karat."""
+
     return px.scatter(
         df,
         x="carat",
@@ -269,7 +256,6 @@ def display_visualizations(df: pd.DataFrame):
 
 def perform_analysis(df: pd.DataFrame, analysis_type: str):
     """Utför vald analys på datan.
-    
     Args:
         df: DataFrame att analysera
         analysis_type: Typ av analys som ska göras
@@ -296,11 +282,7 @@ def perform_analysis(df: pd.DataFrame, analysis_type: str):
             avg_price.columns = ["Cut", "Medelpris (USD)"]
             st.subheader("📊 Medelpris per Cut")
             st.dataframe(avg_price)
-
-# =============================================================================
-# HUVUDAPPLIKATION
-# =============================================================================
-
+            
 def main():
     """Huvudfunktion för applikationen."""
 
