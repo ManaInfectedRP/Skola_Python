@@ -42,6 +42,45 @@ with st.spinner("Laddar data..."):
 
     if uploaded_file is not None:
         df = load_data(uploaded_file)
+
+        # --- Rensa data om kolumnerna finns ---
+        df_clean = df.copy()
+        removed = {}
+
+        # Depth-avvikelse
+        if all(col in df_clean.columns for col in ['x', 'y', 'z', 'depth']):
+            df_clean['depth_calc'] = (df_clean['z'] / ((df_clean['x'] + df_clean['y']) / 2)) * 100
+            df_clean['depth_diff'] = abs(df_clean['depth_calc'] - df_clean['depth'])
+            before = df_clean.shape[0]
+            df_clean = df_clean[df_clean['depth_diff'] <= 1]
+            removed[">1% avvikelse i depth"] = before - df_clean.shape[0]
+
+        # Längd–bredd-förhållande
+        if all(col in df_clean.columns for col in ['x', 'y']):
+            df_clean['längd_bredd_kvot'] = df_clean['x'] / df_clean['y']
+            before = df_clean.shape[0]
+            df_clean = df_clean[(df_clean['längd_bredd_kvot'] >= 0.9) & (df_clean['längd_bredd_kvot'] <= 1.1)]
+            removed['L/B-förhållande utanför 0.9–1.1'] = before - df_clean.shape[0]
+
+        # Ta bort nollvärden i mått
+        cols_to_check = ['carat', 'price', 'x', 'y', 'z']
+        cols_exist = [col for col in cols_to_check if col in df_clean.columns]
+        if cols_exist:
+            before = df_clean.shape[0]
+            df_clean = df_clean[(df_clean[cols_exist] != 0).all(axis=1)]
+            removed['Nollvärden i fysiska mått'] = before - df_clean.shape[0]
+
+        # Visa info i gränssnittet
+        antal_före = len(df)
+        antal_efter = len(df_clean)
+        st.markdown(f"🧹 **Rensning av data:** {antal_före - antal_efter} rader borttagna, {antal_efter} kvar.")
+        if removed:
+            with st.expander("📋 Detaljerad rensningslogg"):
+                st.markdown(f"- **DropNA är gjorde i returnen av DF när filen lässes in detta är extra.")
+                for reason, count in removed.items():
+                    st.markdown(f"- **{reason}**: {count} rader")
+
+
         st.success("✅ Fil inläst!")
     else:
         df = None
