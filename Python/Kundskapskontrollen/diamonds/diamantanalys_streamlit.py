@@ -7,6 +7,7 @@ CONFIG = {
     'page_title': "Diamantanalys – Guldfynd",
     'background_url': "https://i.imgur.com/edBoQCV.jpeg",
     'required_columns': ['carat', 'price', 'cut', 'color', 'clarity'],
+    'required_columns2': ['brand', 'model', 'year', 'mileage', 'price'],
     'depth_tolerance': 1.0,
     'length_width_ratio_range': (0.9, 1.1),
     'zero_check_columns': ['carat', 'price', 'x', 'y', 'z']
@@ -282,7 +283,7 @@ def perform_analysis(df: pd.DataFrame, analysis_type: str):
             avg_price.columns = ["Cut", "Medelpris (USD)"]
             st.subheader("📊 Medelpris per Cut")
             st.dataframe(avg_price)
-            
+
 def main():
     """Huvudfunktion för applikationen."""
 
